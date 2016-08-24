@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: zuul-issue-repro
+  cloud:
+    config:
+      enabled: false
+      discovery:
+        enabled: false
+    bus:
+      enabled: false
+
+eureka:
+  client:
+    enabled: false
+
+ribbon:
+  eureka:
+    enabled: false
+
+zuul:
+  ignoredServices: '*'
+  routes:
+    passthru:
+      path: /test
+      url: http://localhost:8080/real
+      sensitiveHeaders:
+      stripPrefix: false
